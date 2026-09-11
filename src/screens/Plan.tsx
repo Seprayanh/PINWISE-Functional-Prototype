@@ -9,7 +9,7 @@ export function PlanScreen({ destination,view,setView,places,itinerary,setItiner
   destination:string;view:PlanView;setView:(v:PlanView)=>void;places:Place[];itinerary:ItineraryDay[];setItinerary:Dispatch<SetStateAction<ItineraryDay[]>>;onPlace:(p:Place)=>void;onDecision:(p:Place,decision:PlaceDecision)=>void;onReoptimize:()=>void;onConflict:()=>void;finalized:boolean;onFinalize:()=>void
 }) {
   const selected=places.filter(p=>p.selected)
-  function move(dayId:number,index:number,dir:-1|1){setItinerary(all=>all.map(d=>{if(d.id!==dayId)return d;const arr=[...d.items];const to=index+dir;if(to<0||to>=arr.length)return d;[arr[index],arr[to]]=[arr[to],arr[index]];return {...d,items:arr}}))} 
+  function move(dayId:number,index:number,dir:-1|1){setItinerary(all=>all.map(d=>{if(d.id!==dayId)return d;const arr=[...d.items];const to=index+dir;if(to<0||to>=arr.length)return d;[arr[index],arr[to]]=[arr[to],arr[index]];return {...d,items:arr}}))}
   function remove(dayId:number,itemId:string,place:Place){setItinerary(all=>all.map(d=>d.id===dayId?{...d,items:d.items.filter(i=>i.id!==itemId)}:d));onDecision(place,'removed')}
   function addPlace(place:Place){const first=itinerary[0];if(!first||first.items.some(i=>i.placeId===place.id))return;setItinerary(all=>all.map(d=>d.id===first.id?{...d,items:[...d.items,{id:`item-${Date.now()}`,time:'16:00',placeId:place.id}]}:d));onDecision(place,'kept')}
   return <div className="screen-scroll"><PageHeader title={`Plan ${destination}`} subtitle={`${selected.length} selected places · built from your sources`}/>
