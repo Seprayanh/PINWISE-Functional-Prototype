@@ -4,25 +4,29 @@ import { divIcon, type Map as LeafletMap } from 'leaflet'
 import type { Place, FreshnessStatus } from '../types'
 
 const STATUS_COLOR: Record<FreshnessStatus, string> = {
-  current:    '#2C5745',
-  review:     '#EB7D00',
-  outdated:   '#8E3B2F',
-  unverified: '#8B8676',
+  current: '#1F6A50',
+  review: '#D96800',
+  outdated: '#9E2F24',
+  unverified: '#6E6959',
 }
 
 const STATUS_LABEL: Record<FreshnessStatus, string> = {
-  current:    'Current',
-  review:     'Needs review',
-  outdated:   'Outdated',
+  current: 'Current',
+  review: 'Needs review',
+  outdated: 'Outdated',
   unverified: 'Unverified',
 }
 
 function pinIcon(place: Place, focused: boolean) {
   const color = STATUS_COLOR[place.status]
   const initials = place.name.split(' ').map(s => s[0]).slice(0, 2).join('')
-  const size = focused ? 44 : 38
-  const fontSize = focused ? 11 : 10
-  const ring = focused ? `outline:3px solid ${color}55;outline-offset:2px;` : ''
+  const size = focused ? 46 : 40
+  const fontSize = focused ? 12 : 11
+  const selectedRing = place.selected && place.decision !== 'removed'
+    ? `outline:4px solid #EBE3A7;outline-offset:2px;`
+    : `opacity:.82;`
+  const focusRing = focused ? `box-shadow:0 0 0 5px rgba(44,87,69,.18),0 5px 16px rgba(46,41,16,.30);` : ''
+
   return divIcon({
     className: '',
     html: `<div style="
@@ -30,16 +34,15 @@ function pinIcon(place: Place, focused: boolean) {
       border-radius:50% 50% 50% 10px;
       transform:rotate(-45deg);
       background:${color};
-      border:2.5px solid #fff;
-      box-shadow:0 4px 14px rgba(46,41,16,.28);
+      border:3px solid #fff;
+      box-shadow:0 5px 16px rgba(46,41,16,.26);
       display:grid;place-items:center;
-      transition:all .15s;
-      ${ring}
+      ${selectedRing}${focusRing}
     "><span style="
       transform:rotate(45deg);
-      color:#fff;font-size:${fontSize}px;font-weight:800;
+      color:#fff;font-size:${fontSize}px;font-weight:900;
       font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;
-      line-height:1;letter-spacing:-.01em;
+      line-height:1;letter-spacing:-.02em;
     ">${initials}</span></div>`,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
@@ -54,11 +57,9 @@ function FitBounds({ places }: { places: Place[] }) {
     const pts = places.filter(p => p.lat && p.lng) as (Place & { lat: number; lng: number })[]
     if (!pts.length || fitted.current) return
     fitted.current = true
-    if (pts.length === 1) {
-      map.setView([pts[0].lat, pts[0].lng], 15)
-    } else {
-      const lats = pts.map(p => p.lat)
-      const lngs = pts.map(p => p.lng)
+    if (pts.length === 1) map.setView([pts[0].lat, pts[0].lng], 15)
+    else {
+      const lats = pts.map(p => p.lat), lngs = pts.map(p => p.lng)
       map.fitBounds(
         [[Math.min(...lats), Math.min(...lngs)], [Math.max(...lats), Math.max(...lngs)]],
         { padding: [48, 48], maxZoom: 14 }
@@ -76,8 +77,7 @@ function SyncBounds({ places }: { places: Place[] }) {
     prevCount.current = places.length
     const pts = places.filter(p => p.lat && p.lng) as (Place & { lat: number; lng: number })[]
     if (pts.length < 2) return
-    const lats = pts.map(p => p.lat)
-    const lngs = pts.map(p => p.lng)
+    const lats = pts.map(p => p.lat), lngs = pts.map(p => p.lng)
     map.fitBounds(
       [[Math.min(...lats), Math.min(...lngs)], [Math.max(...lats), Math.max(...lngs)]],
       { padding: [48, 48], maxZoom: 14, animate: true }
@@ -108,9 +108,8 @@ export function RealMap({ places, focusedId, onPlace, height = 350 }: RealMapPro
         attributionControl={false}
       >
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          subdomains="abcd"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; OpenStreetMap contributors'
           maxZoom={19}
         />
         <FitBounds places={visible} />
@@ -125,18 +124,14 @@ export function RealMap({ places, focusedId, onPlace, height = 350 }: RealMapPro
             <Popup className="pinwise-popup" closeButton={false}>
               <div className="pinwise-popup-inner">
                 <strong>{p.name}</strong>
-                <span style={{ color: STATUS_COLOR[p.status] }}>
-                  {STATUS_LABEL[p.status]}
-                </span>
-                <em>{p.area} · {p.kind}</em>
+                <span style={{ color: STATUS_COLOR[p.status] }}>{STATUS_LABEL[p.status]}</span>
+                <em>{p.selected ? 'Included' : 'Candidate'} · {p.area} · {p.kind}</em>
               </div>
             </Popup>
           </Marker>
         ))}
       </MapContainer>
-      <div className="real-map-attr">
-        &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noreferrer">CARTO</a>
-      </div>
+      <div className="real-map-attr">&copy; OpenStreetMap contributors</div>
     </div>
   )
 }

@@ -51,6 +51,7 @@ export type Place = {
   lng?: number
   lastChecked?: string
   evidence?: EvidenceItem[]
+  alternativeId?: string
 }
 
 export type ItineraryItem = {
@@ -72,4 +73,14 @@ export type ConflictIssue = {
   severity: 'warning' | 'info'
   title: string
   detail: string
+}
+
+export type TripPlan = {
+  id: string
+  meta: TripMeta
+  sources: SourceItem[]
+  places: Place[]
+  itinerary: ItineraryDay[]
+  finalized: boolean
+  updatedAt: string
 }

@@ -1,0 +1,56 @@
+/* PINWISE v3 visual-strength overrides */
+:root{
+  --forest:#1F5F49;
+  --olive:#241F08;
+  --orange:#D96800;
+  --danger:#9E2F24;
+  --muted:#575240;
+  --border:#DDD4B8;
+  --border-strong:#BEB493;
+  --soft-green:#E2F0E8;
+  --soft-orange:#FFE8C7;
+  --soft-sand:#F8F1D2;
+}
+.page-header h1,.flow-title h1{font-weight:850}
+.page-header p,.flow-title p{font-weight:520;color:var(--muted)}
+.brand,.eyebrow{font-weight:900}
+.primary-button,.secondary-button,.new-trip-inline,.segmented button{font-weight:850}
+.primary-button{background:#1F5F49;box-shadow:0 5px 14px rgba(31,95,73,.18)}
+.secondary-button{border:1.5px solid var(--border-strong);background:#fffdf7}
+.quick-card strong,.source-row strong,.place-copy strong,.day-heading strong,.it-place strong{font-weight:800}
+.badge{font-weight:850}
+.badge-current{background:#DDEFE5;color:#174C3A}
+.badge-review{background:#FFE2B7;color:#9A4300}
+.badge-outdated{background:#F7D7D1;color:#7D211A}
+.badge-unverified{background:#E8E5DB;color:#514D41}
+.dot.current{background:#1F6A50}.dot.review{background:#D96800}.dot.outdated{background:#9E2F24}.dot.unverified{background:#6E6959}
+
+.trips-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:4px 0 12px}
+.trips-heading>div{display:flex;flex-direction:column;gap:4px}
+.trips-heading strong{font-size:17px;font-weight:850}
+.trips-heading span{font-size:11px;color:var(--muted);line-height:1.3}
+.new-trip-inline{border:0;background:var(--forest);color:#fff;border-radius:12px;padding:9px 11px;white-space:nowrap}
+.trip-card-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.trip-card{position:relative;border:1.5px solid var(--border);background:#fff;border-radius:18px;overflow:hidden}
+.trip-card.active{border-color:var(--forest);box-shadow:0 0 0 3px rgba(31,95,73,.10)}
+.trip-card-main{display:block;width:100%;border:0;background:transparent;text-align:left;padding:14px 14px 12px;color:var(--olive)}
+.trip-card-top{display:flex;align-items:center;justify-content:space-between}
+.trip-card h2{font-size:19px;margin:8px 0 3px;font-weight:900;letter-spacing:-.02em}
+.trip-card p{margin:0;color:var(--muted);font-size:12px;font-weight:600}
+.trip-card small{display:block;margin-top:9px;color:#7A735C;font-size:10px;font-weight:650}
+.trip-status{font-size:10px;font-weight:850;border-radius:999px;padding:5px 8px}
+.trip-status.saved{background:var(--soft-green);color:var(--forest)}
+.trip-status.draft{background:var(--soft-sand);color:var(--olive)}
+.trip-stats{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.trip-stats span{background:#F6F3E8;border:1px solid var(--border);border-radius:999px;padding:5px 8px;font-size:10px;color:var(--muted);font-weight:700}
+.trip-stats span b{color:var(--olive);font-weight:900}
+.trip-stats span.warn{background:var(--soft-orange);color:#904000;border-color:#F1C78E}
+.trip-delete{position:absolute;right:10px;bottom:9px;border:0;background:none;color:#8E3B2F;font-size:10px;font-weight:800;padding:5px}
+
+.plan-switcher{display:flex;gap:8px;align-items:flex-end;margin:2px 0 12px}
+.plan-switcher label{flex:1;display:flex;flex-direction:column;gap:5px}
+.plan-switcher label>span{font-size:10px;font-weight:850;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.plan-switcher select{height:40px;border:1.5px solid var(--border-strong);border-radius:12px;background:white;color:var(--olive);padding:0 10px;font-weight:800;outline:none}
+.plan-switcher>button{width:40px;height:40px;border:0;border-radius:12px;background:var(--forest);color:white;font-size:20px;font-weight:800}
+.warning-card.danger{background:#FBE5E1;border-color:#E6A79C}
+.warning-card.danger .warning-icon{background:#F6CEC7;color:var(--danger)}
