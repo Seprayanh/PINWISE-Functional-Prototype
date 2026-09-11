@@ -47,6 +47,8 @@ export type Place = {
   recentInfo: string
   note: string
   marker: { x: number; y: number }
+  lat?: number
+  lng?: number
   lastChecked?: string
   evidence?: EvidenceItem[]
 }
