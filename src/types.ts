@@ -2,6 +2,16 @@ export type Tab = 'home' | 'sources' | 'plan' | 'settings'
 export type PlanView = 'map' | 'places' | 'itinerary'
 export type FreshnessStatus = 'current' | 'review' | 'outdated' | 'unverified'
 export type StudyCondition = 'aggregation' | 'freshness'
+export type PlaceDecision = 'candidate' | 'kept' | 'removed' | 'review' | 'replaced'
+export type OptimizeMode = 'preserve' | 'suggest'
+
+export type TripMeta = {
+  id: string
+  destination: string
+  startDate: string
+  endDate: string
+  saved: boolean
+}
 
 export type SourceItem = {
   id: number
@@ -11,6 +21,15 @@ export type SourceItem = {
   age: string
   url?: string
   preview?: string
+  analyzed?: boolean
+}
+
+export type EvidenceItem = {
+  id: string
+  source: string
+  age: string
+  text: string
+  tone: 'current' | 'old' | 'conflict'
 }
 
 export type Place = {
@@ -20,6 +39,7 @@ export type Place = {
   kind: string
   mentions: number
   selected: boolean
+  decision: PlaceDecision
   status: FreshnessStatus
   postAge: string
   confidence: 'High' | 'Medium' | 'Low'
@@ -27,6 +47,8 @@ export type Place = {
   recentInfo: string
   note: string
   marker: { x: number; y: number }
+  lastChecked?: string
+  evidence?: EvidenceItem[]
 }
 
 export type ItineraryItem = {
@@ -40,4 +62,12 @@ export type ItineraryDay = {
   title: string
   area: string
   items: ItineraryItem[]
+}
+
+export type ConflictIssue = {
+  id: string
+  type: 'hours' | 'travel' | 'overlap' | 'freshness'
+  severity: 'warning' | 'info'
+  title: string
+  detail: string
 }
