@@ -1,0 +1,33 @@
+/* PINWISE v3.1: app-level My Trips -> selected Trip Workspace */
+.phone-content.workspace-mode{bottom:112px}
+.phone-content:not(.workspace-mode){bottom:34px}
+.workspace-topbar{position:absolute;z-index:35;top:0;left:0;right:0;height:58px;display:flex;align-items:center;justify-content:space-between;padding:6px 20px;background:rgba(252,250,243,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.workspace-topbar>button{border:0;background:none;color:var(--forest);font-weight:900;font-size:14px;display:flex;align-items:center;gap:5px;padding:8px 4px}
+.workspace-topbar>div{text-align:right;display:flex;flex-direction:column;gap:1px}
+.workspace-topbar strong{font-size:14px;font-weight:900;color:var(--olive)}
+.workspace-topbar small{font-size:10px;font-weight:700;color:var(--muted)}
+.workspace-view{position:absolute;top:58px;left:0;right:0;bottom:0;overflow:hidden}
+.app-level-view{height:100%;overflow:hidden}
+
+.app-home-heading{margin-top:2px}
+.app-level-trip-card{border:1.5px solid var(--border-strong)}
+.app-level-trip-card .trip-card-main{padding-bottom:38px}
+.open-trip-row{margin-top:12px;padding-top:10px;border-top:1px solid #eee8d7;display:flex;justify-content:space-between;color:var(--forest);font-size:11px;font-weight:850}
+.workspace-hero{margin-top:4px}
+.danger-button{width:100%;height:50px;border:0;border-radius:14px;background:#9E2F24;color:#fff;font-weight:900;font-size:15px;margin-bottom:9px}
+.delete-sheet h2{font-weight:900}
+
+/* no-key OSM tiles, visually softened to resemble the prior CARTO Light direction */
+.carto-like-map{position:relative;background:#f3f1e8}
+.carto-like-map .leaflet-tile-pane{filter:grayscale(.82) saturate(.42) brightness(1.16) contrast(.82) sepia(.06)}
+.carto-like-map .leaflet-container{background:#f2efe5}
+.map-warm-overlay{position:absolute;inset:0;z-index:300;pointer-events:none;background:rgba(248,244,225,.10);border-radius:inherit}
+.carto-like-map .leaflet-marker-pane,.carto-like-map .leaflet-popup-pane{z-index:500}
+.carto-like-map .real-map-attr{z-index:650}
+.real-map-wrap{border:1px solid #ddd4b8;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(46,41,16,.07)}
+.map-legend{font-weight:700}
+
+/* retain stronger v3 typography */
+.page-header h1,.flow-title h1,.trip-card h2,.hero-card h2{font-weight:900}
+.page-header p,.trip-card p,.hero-card p{font-weight:560}
+.quick-card strong,.day-heading strong,.it-place strong,.source-row strong,.place-copy strong{font-weight:850}
