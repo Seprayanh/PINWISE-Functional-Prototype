@@ -18,7 +18,7 @@ export function TripOverview({plan,onTab,onFreshness}:{plan:TripPlan;onTab:(t:Ta
       </button>
       <div className="quick-grid">
         <button className="quick-card" onClick={()=>onTab('sources')}><strong>Sources</strong><span>{plan.sources.length} imported items</span></button>
-        <button className="quick-card" onClick={()=>onTab('plan')}><strong>Map & places</strong><span>{selected} selected places</span></button>
+        <button className="quick-card" onClick={()=>onTab('plan')}><strong>Map &amp; places</strong><span>{selected} selected places</span></button>
         <button className="quick-card" onClick={onFreshness}><strong>Freshness</strong><span>{reviews?`${reviews} need review`:'Checks complete'}</span></button>
         <button className="quick-card" onClick={()=>onTab('plan')}><strong>Itinerary</strong><span>{plan.itinerary.length} day plan</span></button>
       </div>

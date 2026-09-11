@@ -28,7 +28,13 @@ function migratePlan(plan:TripPlan):TripPlan{
     const demo=makeTokyoDemo({...plan.meta,id:plan.id})
     return {...demo,finalized:plan.finalized||false,updatedAt:plan.updatedAt||now()}
   }
-  return {...plan,sources:plan.sources||[],places:(plan.places||[]).map(p=>p.id==='restaurant-a'&&!p.alternativeId?{...p,alternativeId:'daikanyama'}:p),itinerary:plan.itinerary?.length?plan.itinerary:[{id:1,title:'Day 1',area:plan.meta.destination,items:[]}],updatedAt:plan.updatedAt||now()}
+  return {
+    ...plan,
+    sources:plan.sources||[],
+    places:(plan.places||[]).map(p=>p.id==='restaurant-a'&&!p.alternativeId?{...p,alternativeId:'daikanyama'}:p),
+    itinerary:plan.itinerary?.length?plan.itinerary:[{id:1,title:'Day 1',area:plan.meta.destination,items:[]}],
+    updatedAt:plan.updatedAt||now()
+  }
 }
 function loadWorkspace(){
   try{
@@ -104,7 +110,7 @@ export default function App(){
   function onAnalyzed(){
     const unanalyzed=sources.filter(s=>!s.analyzed).length
     setSources(ss=>ss.map(s=>({...s,analyzed:true})))
-    setPlaces(ps=>{const ids=new Set(ps.map(p=>p.id));const base=EXTRACTED_BATCH.filter(p=>!ids.has(p.id));if(base.length)return [...ps,...base];if(!unanalyzed)return ps;const suffix=Date.now().toString().slice(-5);return [...ps,{...EXTRACTED_BATCH[0],id:`generated-${suffix}`,name:`New ${trip.destination} stop ${ps.length+1}`,selected:false,decision:'candidate',status:'unverified'}]})
+    setPlaces(ps=>{const ids=new Set(ps.map(p=>p.id));const base=EXTRACTED_BATCH.filter(p=>!ids.has(p.id));if(base.length)return [...ps,...base];if(!unanalyzed)return ps;const suffix=Date.now().toString().slice(-5);return [...ps,{...EXTRACTED_BATCH[0],id:`generated-${suffix}`,name:`New ${trip.destination} stop ${ps.length+1}`,selected:false,decision:'candidate' as const,status:'unverified' as const}]})
     showToast('AI extraction complete · new places added');setPlanView('places');setTab('plan')
   }
   function runBusy(type:'optimize'|'conflict',mode?:OptimizeMode){
@@ -134,14 +140,24 @@ export default function App(){
   return <div className="app-shell"><div className="phone-frame" role="application" aria-label="PINWISE v3.1 workspace-based functional high-fidelity prototype">
     <StatusBar/>
     <div className={`phone-content ${workspaceOpen?'workspace-mode':''}`}>
-      {workspaceOpen&&<div className="workspace-topbar"><button onClick={closeWorkspace} aria-label="Back to My Trips">← <span>My Trips</span></button><div><strong>{trip.destination}</strong><small>{trip.startDate.slice(5)}–{trip.endDate.slice(5)}</small></div></div>}
+      {workspaceOpen&&<div className="workspace-topbar">
+        <button onClick={closeWorkspace} aria-label="Back to My Trips">← <span>My Trips</span></button>
+        <div><strong>{trip.destination}</strong><small>{trip.startDate.slice(5)}–{trip.endDate.slice(5)}</small></div>
+      </div>}
       <div className={workspaceOpen?'workspace-view':'app-level-view'}>{content}</div>
     </div>
     {workspaceOpen&&<><BottomNav active={tab} onChange={setTab}/><HomeIndicator/></>}
     {!workspaceOpen&&<HomeIndicator/>}
     {focusedPlace&&<div className="overlay-layer"><FreshnessFlow place={focusedPlace} condition={settings.condition} onClose={()=>setFreshnessPlace(null)} onUpdate={p=>{updatePlace(p);if(p.selected)ensureInItinerary(p);setFreshnessPlace(null)}} onReplace={replacePlace} onRemove={removePlace}/></div>}
     {newTripOpen&&<NewTrip onClose={()=>setNewTripOpen(false)} onCreate={createTrip}/>}
-    {pendingDeleteId&&<div className="modal-scrim"><div className="sheet-card delete-sheet"><div className="sheet-handle"/><span className="eyebrow">DELETE TRIP</span><h2>Delete {plans.find(p=>p.id===pendingDeleteId)?.meta.destination}?</h2><p className="sheet-copy">This trip, its imported sources, freshness checks and itinerary will be permanently removed.</p><button className="danger-button" onClick={confirmDelete}>Delete trip</button><button className="secondary-button" onClick={()=>setPendingDeleteId(null)}>Cancel</button></div></div>}
+    {pendingDeleteId&&<div className="modal-scrim"><div className="sheet-card delete-sheet">
+      <div className="sheet-handle"/>
+      <span className="eyebrow">DELETE TRIP</span>
+      <h2>Delete {plans.find(p=>p.id===pendingDeleteId)?.meta.destination}?</h2>
+      <p className="sheet-copy">This trip, its imported sources, freshness checks and itinerary will be permanently removed.</p>
+      <button className="danger-button" onClick={confirmDelete}>Delete trip</button>
+      <button className="secondary-button" onClick={()=>setPendingDeleteId(null)}>Cancel</button>
+    </div></div>}
     {optimizePicker&&<div className="modal-scrim"><div className="sheet-card"><div className="sheet-handle"/><span className="eyebrow">RE-OPTIMIZE</span><h2>How should AI help?</h2><button className="mode-choice" onClick={()=>{setOptimizePicker(false);runBusy('optimize','preserve')}}><strong>Optimize around my choices</strong><span>Keep every place you added, removed, or reordered. AI only adjusts logistics and timing.</span></button><button className="mode-choice" onClick={()=>{setOptimizePicker(false);runBusy('optimize','suggest')}}><strong>Suggest better alternatives</strong><span>AI may suggest replacements, but nothing changes until you confirm.</span></button><button className="ghost-button" onClick={()=>setOptimizePicker(false)}>Cancel</button></div></div>}
     {alternativeSuggestion&&<div className="modal-scrim"><div className="sheet-card"><div className="sheet-handle"/><span className="eyebrow">AI SUGGESTION · NEEDS CONFIRMATION</span><h2>Review a suggested alternative</h2><p className="sheet-copy">AI found a verified alternative for a place with freshness concerns. Nothing changes until you confirm.</p><button className="primary-button" onClick={confirmAlternative}>Accept replacement</button><button className="secondary-button" onClick={()=>{setAlternativeSuggestion(false);showToast('Suggestion declined · your choices preserved')}}>Keep my current plan</button></div></div>}
     {busy&&<div className="modal-scrim"><div className="modal-card"><ProgressPanel title={busy.type==='optimize'?'AI is re-optimizing':'Checking itinerary constraints'} subtitle={busy.type==='optimize'?'Applying the mode you selected without silently overriding your decisions.':'Checking opening hours, travel gaps, overlaps, and unresolved freshness.'} progress={busy.progress}/></div></div>}
