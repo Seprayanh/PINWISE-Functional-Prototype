@@ -1,26 +1,39 @@
-# PINWISE Visual Polish v5 Integration
+# PINWISE Visual Polish v5 Final Integration
 
-Purpose:
-Connect existing visual components into real user flows.
+Final goal:
+Move from component preparation to real application integration.
 
-Files to update:
-1. src/types.ts
-   - add image fields
+Integrated targets:
 
-2. src/main.tsx
-   - load image enhancement styles
+- types.ts
+  - image fields
 
-3. src/data/CITY_PLACE_DATA.ts
-   - bind place images
+- main.tsx
+  - image enhancement stylesheet loading
 
-4. src/screens/Plan.tsx
-   - add TripCover
+- CITY_PLACE_DATA.ts
+  - image data binding
 
-5. src/screens/FreshnessFlow.tsx
-   - add EvidencePreview
+- Plan.tsx
+  - Trip cover visualization
 
-Result:
-- Trip cover becomes visible
-- Place images become data-driven
-- AI evidence gains visual support
-- Existing logic remains unchanged
+- FreshnessFlow.tsx
+  - evidence image visualization
+
+After integration:
+Remove obsolete PATCH files.
+
+Expected final structure:
+
+src/
+├ components/
+│  ├ TripCover.tsx
+│  ├ EvidencePreview.tsx
+│  └ ImageThumbnail.tsx
+├ data/
+│  └ CITY_PLACE_DATA.ts
+├ screens/
+│  ├ Plan.tsx
+│  └ FreshnessFlow.tsx
+├ types.ts
+└ main.tsx

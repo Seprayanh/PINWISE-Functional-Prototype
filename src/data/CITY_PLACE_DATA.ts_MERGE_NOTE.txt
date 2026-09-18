@@ -1,0 +1,18 @@
+FINAL INTEGRATION NOTE
+
+Modify existing CITY_PLACE_DATA.ts.
+
+Add image bindings to existing places.
+
+Example:
+
+{
+ name: "Koffee Mameya",
+ image: "/images/koffee.jpg",
+ evidenceImage: "/images/koffee-evidence.jpg"
+}
+
+Do not remove:
+- coordinates
+- city
+- place metadata
