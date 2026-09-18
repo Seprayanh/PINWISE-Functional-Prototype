@@ -9,19 +9,17 @@ export function PlaceCard({
  onDecision,
  compact=false
 }:{
- place:Place;
+ place:Place & { image?:string };
  onOpen:()=>void;
  onDecision?:(decision:PlaceDecision)=>void;
- compact?:boolean
+ compact?:boolean;
 }) {
-
  return (
   <article className={`place-card ${compact?'compact':''} decision-${place.decision}`}>
-
    <button className="place-card-main" onClick={onOpen}>
 
     <ImageThumbnail
-      src={(place as any).image}
+      src={place.image}
       alt={place.name}
       className="place-card-image"
     />
@@ -40,24 +38,29 @@ export function PlaceCard({
     </div>
 
     <IconChevron/>
-
    </button>
 
    {onDecision &&
     <div className="place-actions">
-      <button className={place.decision==='kept'?'active':''}
-        onClick={()=>onDecision('kept')}>
-        Keep
+      <button
+       className={place.decision==='kept'?'active':''}
+       onClick={()=>onDecision('kept')}
+      >
+       Keep
       </button>
 
-      <button className={place.decision==='review'?'active review':''}
-        onClick={()=>onDecision('review')}>
-        Review
+      <button
+       className={place.decision==='review'?'active review':''}
+       onClick={()=>onDecision('review')}
+      >
+       Review
       </button>
 
-      <button className={place.decision==='removed'?'active removed':''}
-        onClick={()=>onDecision('removed')}>
-        Remove
+      <button
+       className={place.decision==='removed'?'active removed':''}
+       onClick={()=>onDecision('removed')}
+      >
+       Remove
       </button>
     </div>
    }
