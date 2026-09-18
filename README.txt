@@ -1,10 +1,10 @@
-After modifying App.tsx:
+Direct replacement version.
 
-git add src/App.tsx
-git add src/data/CITY_PLACE_DATA.ts
+Replace:
+src/components/PlaceCard.tsx
+src/screens/FreshnessFlow.tsx
 
-git commit -m "Bind city destination with actual place dataset"
-
+Then:
+git add .
+git commit -m "Integrate AI transparency UI into actual components"
 git push origin main
-
-Then sync Figma Make from GitHub.
