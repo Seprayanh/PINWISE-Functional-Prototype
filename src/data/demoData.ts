@@ -1,3 +1,4 @@
+import { imageImports } from './imageImports'
 import type { ItineraryDay, Place, SourceItem, TripMeta } from '../types'
 
 export const INITIAL_TRIP: TripMeta = {
@@ -17,7 +18,7 @@ const ev = (id:string, source:string, age:string, text:string, tone:'current'|'o
 
 export const INITIAL_PLACES: Place[] = [
   {
-    id:'koffee-mame', name:'Koffee Mame', area:'Omotesando', kind:'Café', mentions:2, image:'/images/tokyo/koffee.png', selected:true, decision:'kept',
+    id:'koffee-mame', name:'Koffee Mame', area:'Omotesando', kind:'Café', mentions:2, image:imageImports.Tokyo.places['Koffee Mame'], selected:true, decision:'kept',
     status:'current', postAge:'2 months', confidence:'High',
     savedInfo:'Open 10:00–18:00 · walk-in queue', recentInfo:'Current listing confirms 10:00–18:00',
     note:'Compact specialty coffee stop with a short queue at peak time.',
@@ -26,7 +27,7 @@ export const INITIAL_PLACES: Place[] = [
     evidence:[ev('km1','Official listing','2 days ago','Open 10:00–18:00. Walk-in queue remains available.','current')],
   },
   {
-    id:'sensoji', name:'Senso-ji Temple', area:'Asakusa', kind:'Attraction', mentions:3, image:'/images/tokyo/sensoji.png', selected:true, decision:'kept',
+    id:'sensoji', name:'Senso-ji Temple', area:'Asakusa', kind:'Attraction', mentions:3, image:imageImports.Tokyo.places['Senso-ji Temple'], selected:true, decision:'kept',
     status:'current', postAge:'3 weeks', confidence:'High',
     savedInfo:'Grounds open daily · main hall 06:00–17:00', recentInfo:'No meaningful conflict found in recent sources.',
     note:'Best visited early before the central walkway gets crowded.',
@@ -35,7 +36,7 @@ export const INITIAL_PLACES: Place[] = [
     evidence:[ev('se1','Official temple site','1 day ago','Main hall hours remain 06:00–17:00.','current')],
   },
   {
-    id:'ueno', name:'Ueno Park', area:'Ueno', kind:'Park', mentions:2, image:'/images/tokyo/ueno.png', selected:true, decision:'kept',
+    id:'ueno', name:'Ueno Park', area:'Ueno', kind:'Park', mentions:2, image:imageImports.Tokyo.places['Ueno Park'], selected:true, decision:'kept',
     status:'current', postAge:'1 month', confidence:'High',
     savedInfo:'Open all day · museums have separate hours', recentInfo:'Current park access unchanged.',
     note:'Pairs naturally with Asakusa on an east-Tokyo day.',
@@ -44,7 +45,7 @@ export const INITIAL_PLACES: Place[] = [
     evidence:[ev('ue1','Tokyo parks listing','4 days ago','Park grounds remain continuously accessible.','current')],
   },
   {
-    id:'restaurant-a', name:'Restaurant A', area:'Shibuya', kind:'Dinner', mentions:2, image:'/images/tokyo/cover.png', selected:true, decision:'review',
+    id:'restaurant-a', name:'Restaurant A', area:'Shibuya', kind:'Dinner', mentions:2, image:imageImports.Tokyo.cover, selected:true, decision:'review',
     status:'review', postAge:'14 months', confidence:'High',
     savedInfo:'Open daily · 10:00–22:00 · walk-in accepted', recentInfo:'Recent evidence reports closing at 20:00 and reservations recommended.',
     note:'This is the core freshness-verification example used in the study flow.',
@@ -56,7 +57,7 @@ export const INITIAL_PLACES: Place[] = [
     ],
   },
   {
-    id:'daikanyama', name:'Daikanyama Café', area:'Daikanyama', kind:'Café', mentions:1, image:'/images/tokyo/cover.png', selected:false, decision:'candidate',
+    id:'daikanyama', name:'Daikanyama Café', area:'Daikanyama', kind:'Café', mentions:1, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
     status:'unverified', postAge:'8 months', confidence:'Medium',
     savedInfo:'Open until 19:00', recentInfo:'Recent listing confirms 11:00–19:00.',
     note:'A nearby user-selectable alternative with current practical info.',
@@ -64,7 +65,7 @@ export const INITIAL_PLACES: Place[] = [
     evidence:[ev('dk1','Official listing','2 days ago','Open 11:00–19:00.','current')],
   },
   {
-    id:'shibuya', name:'Shibuya Crossing', area:'Shibuya', kind:'Walk', mentions:4, image:'/images/tokyo/cover.png', selected:true, decision:'kept',
+    id:'shibuya', name:'Shibuya Crossing', area:'Shibuya', kind:'Walk', mentions:4, image:imageImports.Tokyo.cover, selected:true, decision:'kept',
     status:'current', postAge:'2 weeks', confidence:'High',
     savedInfo:'Best around sunset / evening', recentInfo:'No practical conflict found.',
     note:'Easy to pair with dinner in the same area.',
@@ -76,14 +77,14 @@ export const INITIAL_PLACES: Place[] = [
 
 export const EXTRACTED_BATCH: Place[] = [
   {
-    id:'meiji', name:'Meiji Jingu', area:'Harajuku', kind:'Attraction', mentions:2, image:'/images/tokyo/cover.png', selected:false, decision:'candidate',
+    id:'meiji', name:'Meiji Jingu', area:'Harajuku', kind:'Attraction', mentions:2, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
     status:'unverified', postAge:'just added', confidence:'Medium',
     savedInfo:'Forest shrine near Harajuku', recentInfo:'Not checked yet.',
     note:'Extracted from a newly added source.',
     marker:{x:26,y:52}, lat:35.6763, lng:139.6993,
   },
   {
-    id:'teamLab', name:'teamLab Borderless', area:'Azabudai', kind:'Museum', mentions:1, image:'/images/tokyo/cover.png', selected:false, decision:'candidate',
+    id:'teamLab', name:'teamLab Borderless', area:'Azabudai', kind:'Museum', mentions:1, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
     status:'unverified', postAge:'just added', confidence:'Medium',
     savedInfo:'Timed-entry digital art museum', recentInfo:'Not checked yet.',
     note:'Extracted from a newly added source.',
@@ -116,7 +117,7 @@ export const HONGKONG_PLACES: Place[] = [
   {
     id:'victoria-peak',
     name:'Victoria Peak',
-    image:'/images/hongkong/victoria-peak.png',
+    image:imageImports.HongKong.places['Victoria Peak'],
     area:'Central',
     kind:'Attraction',
     mentions:4,
@@ -137,7 +138,7 @@ export const HONGKONG_PLACES: Place[] = [
   {
     id:'mplus',
     name:'M+ Museum',
-    image:'/images/hongkong/m-plus.png',
+    image:imageImports.HongKong.places['M+ Museum'],
     area:'West Kowloon',
     kind:'Museum',
     mentions:3,
@@ -160,7 +161,7 @@ export const HONGKONG_PLACES: Place[] = [
   {
     id:'tai-kwun',
     name:'Tai Kwun',
-    image:'/images/hongkong/cover.png',
+    image:imageImports.HongKong.cover,
     area:'Central',
     kind:'Culture',
     mentions:2,

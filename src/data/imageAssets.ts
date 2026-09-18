@@ -1,49 +1,45 @@
+import { imageImports } from "./imageImports";
+
 export type ImageAsset = {
-  cover: string
-  thumbnail: string
-  evidence: string
-}
+  cover: string;
+  thumbnail: string;
+  evidence: string;
+};
 
 export const imageAssets: Record<string, ImageAsset> = {
   tokyo: {
-    cover: "/images/tokyo/cover.png",
-    thumbnail: "/images/tokyo/cover.png",
-    evidence: "/images/tokyo/cover.png",
+    cover: imageImports.Tokyo.cover,
+    thumbnail: imageImports.Tokyo.cover,
+    evidence: imageImports.Tokyo.cover,
   },
-
   hongkong: {
-    cover: "/images/hongkong/cover.png",
-    thumbnail: "/images/hongkong/cover.png",
-    evidence: "/images/hongkong/cover.png",
+    cover: imageImports.HongKong.cover,
+    thumbnail: imageImports.HongKong.cover,
+    evidence: imageImports.HongKong.cover,
   },
-
   koffeeMameya: {
-    cover: "/images/tokyo/koffee.png",
-    thumbnail: "/images/tokyo/koffee.png",
-    evidence: "/images/tokyo/koffee.png",
+    cover: imageImports.Tokyo.places["Koffee Mame"],
+    thumbnail: imageImports.Tokyo.places["Koffee Mame"],
+    evidence: imageImports.Tokyo.places["Koffee Mame"],
   },
-
   sensoJi: {
-    cover: "/images/tokyo/sensoji.png",
-    thumbnail: "/images/tokyo/sensoji.png",
-    evidence: "/images/tokyo/sensoji.png",
+    cover: imageImports.Tokyo.places["Senso-ji Temple"],
+    thumbnail: imageImports.Tokyo.places["Senso-ji Temple"],
+    evidence: imageImports.Tokyo.places["Senso-ji Temple"],
   },
-
   uenoPark: {
-    cover: "/images/tokyo/ueno.png",
-    thumbnail: "/images/tokyo/ueno.png",
-    evidence: "/images/tokyo/ueno.png",
+    cover: imageImports.Tokyo.places["Ueno Park"],
+    thumbnail: imageImports.Tokyo.places["Ueno Park"],
+    evidence: imageImports.Tokyo.places["Ueno Park"],
   },
-
   victoriaPeak: {
-    cover: "/images/hongkong/victoria-peak.png",
-    thumbnail: "/images/hongkong/victoria-peak.png",
-    evidence: "/images/hongkong/victoria-peak.png",
+    cover: imageImports.HongKong.places["Victoria Peak"],
+    thumbnail: imageImports.HongKong.places["Victoria Peak"],
+    evidence: imageImports.HongKong.places["Victoria Peak"],
   },
-
   mPlus: {
-    cover: "/images/hongkong/m-plus.png",
-    thumbnail: "/images/hongkong/m-plus.png",
-    evidence: "/images/hongkong/m-plus.png",
+    cover: imageImports.HongKong.places["M+ Museum"],
+    thumbnail: imageImports.HongKong.places["M+ Museum"],
+    evidence: imageImports.HongKong.places["M+ Museum"],
   },
-}
+};
