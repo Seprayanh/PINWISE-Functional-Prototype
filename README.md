@@ -1,16 +1,23 @@
-# PINWISE Image Enhancement v1
+# PINWISE Image Enhancement v2 Integration
 
-Added:
+Integrated visual layer:
 
-- Trip cover image system
-- Place thumbnails
-- AI evidence preview image
-- Image fallback component
+1. PlaceCard
+- Replace letter avatar with ImageThumbnail
+- Add place image support
 
-Suggested integration:
+2. Plan
+- Add TripCover hero image
 
-1. Import imageAssets into CITY_PLACE_DATA
-2. Add thumbnail field to Place type
-3. Add TripCover to Plan/Home header
-4. Add EvidencePreview inside FreshnessFlow
+3. FreshnessFlow
+- Add EvidencePreview image
 
+4. Types
+- Add optional image field
+
+Recommended order:
+1. Update Place type
+2. Add image field in city/place data
+3. Replace PlaceCard
+4. Insert TripCover
+5. Insert EvidencePreview
