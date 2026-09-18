@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'leaflet/dist/leaflet.css';
 
@@ -5,8 +6,8 @@
   --olive:#2E2910; --forest:#2C5745; --sand:#EBE3A7; --orange:#EB7D00; --app:#FCFAF3; --surface:#FFFFFF;
   --border:#E9E3CF; --border-strong:#CFC7AE; --muted:#716C59; --soft-green:#EAF2ED; --soft-orange:#FFF1DC; --soft-sand:#FAF7E8;
   --danger:#8E3B2F; --ai:#7567D8; --ai-soft:#F0EEFF; --shadow:0 20px 60px rgba(46,41,16,.18); --radius:18px;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif; color:var(--olive); background:#EDE8D8;
-  font-synthesis:none; text-rendering:optimizeLegibility;
+  font-family:"Inter",sans-serif; color:var(--olive); background:#EDE8D8;
+  font-synthesis:none; text-rendering:optimizeLegibility; --font-display:"Fraunces",serif; --font-ui:"Inter",sans-serif;
 }
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased}html,body,#root{margin:0;min-height:100%;width:100%}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}::-webkit-scrollbar{display:none}*{scrollbar-width:none}
 body{min-height:100vh;background:radial-gradient(circle at 50% 15%,#fffaf0 0,#e9e2ce 45%,#d7cfb7 100%)}
@@ -37,3 +38,39 @@ body{min-height:100vh;background:radial-gradient(circle at 50% 15%,#fffaf0 0,#e9
 /* RealMap */
 .real-map-wrap{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--border)}.real-map-wrap .leaflet-container{background:#F5F0E4}.real-map-attr{position:absolute;bottom:6px;right:8px;font-size:9px;color:#8B8676;z-index:400;pointer-events:none}.real-map-attr a{color:#8B8676;text-decoration:none;pointer-events:auto}
 .leaflet-popup-content-wrapper{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 24px rgba(46,41,16,.16);padding:0}.leaflet-popup-content{margin:0}.pinwise-popup-inner{padding:10px 13px;display:flex;flex-direction:column;gap:2px;min-width:130px}.pinwise-popup-inner strong{font-size:13px;font-weight:750;color:var(--olive)}.pinwise-popup-inner span{font-size:10px;font-weight:700}.pinwise-popup-inner em{font-size:10px;color:var(--muted);font-style:normal}.leaflet-popup-tip-container{display:none}.leaflet-popup{margin-bottom:6px}
+
+/* PINWISE Typography System v1.0 integration */
+h1,h2,h3,
+.page-header h1,
+.flow-title h1,
+.hero-card h2,
+.sheet-card h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+body,
+button,
+input,
+.badge,
+.primary-button,
+.secondary-button {
+  font-family: var(--font-ui);
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.page-header h1,
+.flow-title h1 {
+  line-height: 1.15;
+}
+
+.badge,
+.place-actions button,
+.primary-button,
+.secondary-button {
+  font-weight: 600;
+}
