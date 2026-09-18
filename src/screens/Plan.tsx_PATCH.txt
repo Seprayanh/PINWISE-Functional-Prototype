@@ -1,0 +1,17 @@
+// PINWISE Plan.tsx patch
+// Replace the RealMap component call inside the map view:
+//
+// BEFORE:
+// <RealMap places={places} onPlace={onPlace} height={350}/>
+//
+// AFTER:
+
+<RealMap
+  places={places}
+  city={destination}
+  onPlace={onPlace}
+  height={350}
+/>
+
+// This passes the current trip destination into RealMap,
+// allowing cityCoordinates fallback positioning when no places exist.

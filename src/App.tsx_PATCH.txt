@@ -1,0 +1,19 @@
+// PINWISE City Place Binding Patch
+//
+// Find the place initialization logic in App.tsx.
+//
+// Before (example):
+// const [places,setPlaces] = useState(INITIAL_PLACES)
+//
+// Replace with:
+//
+// const [places,setPlaces] = useState(INITIAL_PLACES)
+//
+// When destination changes after creating a trip:
+//
+// const nextPlaces = CITY_PLACE_DATA[destination] || INITIAL_PLACES
+// setPlaces(nextPlaces)
+//
+// This makes:
+// Tokyo -> Tokyo places
+// Hong Kong -> Hong Kong places
