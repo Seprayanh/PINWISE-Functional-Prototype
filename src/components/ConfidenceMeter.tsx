@@ -1,17 +1,17 @@
 export function ConfidenceMeter({
  confidence
 }:{
- confidence?:string|number
+ confidence?:number
 }){
 
- const value =
- typeof confidence==='number'
- ? confidence
- : confidence?.toLowerCase()==='high'
- ? 85
- : confidence?.toLowerCase()==='medium'
- ? 60
- : 35
+ const value = confidence ?? 0
+
+ const label =
+ value >= 90
+ ? 'High confidence'
+ : value >= 75
+ ? 'Medium confidence'
+ : 'Low confidence'
 
  return (
  <div className="confidence-card">
@@ -29,7 +29,7 @@ export function ConfidenceMeter({
   </div>
 
   <small>
-   Based on recent evidence
+   {label} · Based on recent evidence
   </small>
 
  </div>

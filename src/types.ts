@@ -42,7 +42,7 @@ export type Place = {
   decision: PlaceDecision
   status: FreshnessStatus
   postAge: string
-  confidence: 'High' | 'Medium' | 'Low'
+  confidence: number
   savedInfo: string
   recentInfo: string
   note: string

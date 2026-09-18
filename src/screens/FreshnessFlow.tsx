@@ -183,7 +183,7 @@ export function FreshnessFlow({
    image={place.evidenceImage}
    source="Recent evidence"
    title={place.recentInfo}
-   confidence={place.confidence === 'High' ? 90 : place.confidence === 'Medium' ? 70 : 50}
+   confidence={place.confidence}
   />
 
   <ConfidenceMeter confidence={place.confidence}/>

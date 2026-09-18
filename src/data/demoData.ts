@@ -19,7 +19,7 @@ const ev = (id:string, source:string, age:string, text:string, tone:'current'|'o
 export const INITIAL_PLACES: Place[] = [
   {
     id:'koffee-mame', name:'Koffee Mame', area:'Omotesando', kind:'Café', mentions:2, image:imageImports.Tokyo.places['Koffee Mame'], selected:true, decision:'kept',
-    status:'current', postAge:'2 months', confidence:'High',
+    status:'current', postAge:'2 months', confidence:92,
     savedInfo:'Open 10:00–18:00 · walk-in queue', recentInfo:'Current listing confirms 10:00–18:00',
     note:'Compact specialty coffee stop with a short queue at peak time.',
     marker:{x:28,y:40}, lat:35.6700, lng:139.7105,
@@ -28,7 +28,7 @@ export const INITIAL_PLACES: Place[] = [
   },
   {
     id:'sensoji', name:'Senso-ji Temple', area:'Asakusa', kind:'Attraction', mentions:3, image:imageImports.Tokyo.places['Senso-ji Temple'], selected:true, decision:'kept',
-    status:'current', postAge:'3 weeks', confidence:'High',
+    status:'current', postAge:'3 weeks', confidence:96,
     savedInfo:'Grounds open daily · main hall 06:00–17:00', recentInfo:'No meaningful conflict found in recent sources.',
     note:'Best visited early before the central walkway gets crowded.',
     marker:{x:72,y:25}, lat:35.7147, lng:139.7967,
@@ -37,7 +37,7 @@ export const INITIAL_PLACES: Place[] = [
   },
   {
     id:'ueno', name:'Ueno Park', area:'Ueno', kind:'Park', mentions:2, image:imageImports.Tokyo.places['Ueno Park'], selected:true, decision:'kept',
-    status:'current', postAge:'1 month', confidence:'High',
+    status:'current', postAge:'1 month', confidence:91,
     savedInfo:'Open all day · museums have separate hours', recentInfo:'Current park access unchanged.',
     note:'Pairs naturally with Asakusa on an east-Tokyo day.',
     marker:{x:70,y:44}, lat:35.7141, lng:139.7733,
@@ -46,7 +46,7 @@ export const INITIAL_PLACES: Place[] = [
   },
   {
     id:'restaurant-a', name:'Restaurant A', area:'Shibuya', kind:'Dinner', mentions:2, image:imageImports.Tokyo.cover, selected:true, decision:'review',
-    status:'review', postAge:'14 months', confidence:'High',
+    status:'review', postAge:'14 months', confidence:85,
     savedInfo:'Open daily · 10:00–22:00 · walk-in accepted', recentInfo:'Recent evidence reports closing at 20:00 and reservations recommended.',
     note:'This is the core freshness-verification example used in the study flow.',
     marker:{x:39,y:66}, lat:35.6617, lng:139.7041,
@@ -58,7 +58,7 @@ export const INITIAL_PLACES: Place[] = [
   },
   {
     id:'daikanyama', name:'Daikanyama Café', area:'Daikanyama', kind:'Café', mentions:1, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
-    status:'unverified', postAge:'8 months', confidence:'Medium',
+    status:'unverified', postAge:'8 months', confidence:78,
     savedInfo:'Open until 19:00', recentInfo:'Recent listing confirms 11:00–19:00.',
     note:'A nearby user-selectable alternative with current practical info.',
     marker:{x:34,y:73}, lat:35.6488, lng:139.7026,
@@ -66,7 +66,7 @@ export const INITIAL_PLACES: Place[] = [
   },
   {
     id:'shibuya', name:'Shibuya Crossing', area:'Shibuya', kind:'Walk', mentions:4, image:imageImports.Tokyo.cover, selected:true, decision:'kept',
-    status:'current', postAge:'2 weeks', confidence:'High',
+    status:'current', postAge:'2 weeks', confidence:93,
     savedInfo:'Best around sunset / evening', recentInfo:'No practical conflict found.',
     note:'Easy to pair with dinner in the same area.',
     marker:{x:43,y:60}, lat:35.6595, lng:139.7004,
@@ -78,14 +78,14 @@ export const INITIAL_PLACES: Place[] = [
 export const EXTRACTED_BATCH: Place[] = [
   {
     id:'meiji', name:'Meiji Jingu', area:'Harajuku', kind:'Attraction', mentions:2, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
-    status:'unverified', postAge:'just added', confidence:'Medium',
+    status:'unverified', postAge:'just added', confidence:82,
     savedInfo:'Forest shrine near Harajuku', recentInfo:'Not checked yet.',
     note:'Extracted from a newly added source.',
     marker:{x:26,y:52}, lat:35.6763, lng:139.6993,
   },
   {
     id:'teamLab', name:'teamLab Borderless', area:'Azabudai', kind:'Museum', mentions:1, image:imageImports.Tokyo.cover, selected:false, decision:'candidate',
-    status:'unverified', postAge:'just added', confidence:'Medium',
+    status:'unverified', postAge:'just added', confidence:88,
     savedInfo:'Timed-entry digital art museum', recentInfo:'Not checked yet.',
     note:'Extracted from a newly added source.',
     marker:{x:49,y:48}, lat:35.6563, lng:139.7394,
@@ -125,7 +125,7 @@ export const HONGKONG_PLACES: Place[] = [
     decision:'kept',
     status:'current',
     postAge:'3 weeks',
-    confidence:'High',
+    confidence:94,
     savedInfo:'Peak Tram access available · best sunset view',
     recentInfo:'Current transport information confirms operation hours',
     note:'Popular viewpoint with changing crowd conditions.',
@@ -146,7 +146,7 @@ export const HONGKONG_PLACES: Place[] = [
     decision:'review',
     status:'review',
     postAge:'8 months',
-    confidence:'High',
+    confidence:86,
     savedInfo:'Open until 22:00 on weekends',
     recentInfo:'Current schedule shows different closing hours',
     note:'Museum exhibitions and opening hours frequently change.',
@@ -169,7 +169,7 @@ export const HONGKONG_PLACES: Place[] = [
     decision:'candidate',
     status:'unverified',
     postAge:'just added',
-    confidence:'Medium',
+    confidence:76,
     savedInfo:'Historic compound with exhibitions',
     recentInfo:'Not checked yet.',
     note:'New candidate extracted from travel sources.',
