@@ -6,32 +6,44 @@ export type ImageAsset = {
 
 export const imageAssets: Record<string, ImageAsset> = {
   hongkong: {
-    cover:
-      "https://images.unsplash.com/photo-1536599018102-9f803c4f7c1b",
-    thumbnail:
-      "https://images.unsplash.com/photo-1536599018102-9f803c4f7c1b",
-    evidence:
-      "https://images.unsplash.com/photo-1519501025264-65ba15a82390",
+    cover: "/images/hongkong-cover.jpg",
+    thumbnail: "/images/hongkong-cover.jpg",
+    evidence: "/images/hongkong-evidence.jpg",
   },
 
   tokyo: {
-    cover:
-      "https://cdn.prod.website-files.com/6865cdc559f013614975d0bc/68cc418d22152a24dc3ec04b_02_escorted_tours_528707295.jpg",
-    thumbnail:
-      "https://tblg.k-img.com/restaurant/images/Rvw/167336/640x640_rect_f3d8222e1605dfd98bae605873855971.jpg",
+    cover: "/images/tokyo-cover.jpg",
+    thumbnail: "/images/tokyo-cover.jpg",
+    evidence: "/images/tokyo-evidence.jpg",
   },
 
   koffeeMameya: {
-    cover:
-      "https://tblg.k-img.com/restaurant/images/Rvw/167336/640x640_rect_f3d8222e1605dfd98bae605873855971.jpg",
-    thumbnail:
-      "https://tblg.k-img.com/restaurant/images/Rvw/167336/640x640_rect_f3d8222e1605dfd98bae605873855971.jpg",
+    cover: "/images/koffee-mameya.jpg",
+    thumbnail: "/images/koffee-mameya.jpg",
+    evidence: "/images/koffee-evidence.jpg",
   },
 
   sensoJi: {
-    cover:
-      "https://cdn.prod.website-files.com/6865cdc559f013614975d0bc/68cc418d22152a24dc3ec04b_02_escorted_tours_528707295.jpg",
-    thumbnail:
-      "https://cdn.prod.website-files.com/6865cdc559f013614975d0bc/68cc418d22152a24dc3ec04b_02_escorted_tours_528707295.jpg",
+    cover: "/images/sensoji.jpg",
+    thumbnail: "/images/sensoji.jpg",
+    evidence: "/images/sensoji-evidence.jpg",
+  },
+
+  uenoPark: {
+    cover: "/images/ueno-park.jpg",
+    thumbnail: "/images/ueno-park.jpg",
+    evidence: "/images/ueno-evidence.jpg",
+  },
+
+  victoriaPeak: {
+    cover: "/images/victoria-peak.jpg",
+    thumbnail: "/images/victoria-peak.jpg",
+    evidence: "/images/victoria-evidence.jpg",
+  },
+
+  mPlus: {
+    cover: "/images/m-plus.jpg",
+    thumbnail: "/images/m-plus.jpg",
+    evidence: "/images/m-plus-evidence.jpg",
   },
 }
