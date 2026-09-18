@@ -1,23 +1,26 @@
-# PINWISE Image Enhancement v2 Integration
+# PINWISE Visual Polish v5 Integration
 
-Integrated visual layer:
+Purpose:
+Connect existing visual components into real user flows.
 
-1. PlaceCard
-- Replace letter avatar with ImageThumbnail
-- Add place image support
+Files to update:
+1. src/types.ts
+   - add image fields
 
-2. Plan
-- Add TripCover hero image
+2. src/main.tsx
+   - load image enhancement styles
 
-3. FreshnessFlow
-- Add EvidencePreview image
+3. src/data/CITY_PLACE_DATA.ts
+   - bind place images
 
-4. Types
-- Add optional image field
+4. src/screens/Plan.tsx
+   - add TripCover
 
-Recommended order:
-1. Update Place type
-2. Add image field in city/place data
-3. Replace PlaceCard
-4. Insert TripCover
-5. Insert EvidencePreview
+5. src/screens/FreshnessFlow.tsx
+   - add EvidencePreview
+
+Result:
+- Trip cover becomes visible
+- Place images become data-driven
+- AI evidence gains visual support
+- Existing logic remains unchanged
