@@ -14,6 +14,13 @@ export function PlanScreen({destination,view,setView,places,itinerary,setItinera
 }) {
   const selected=places.filter(p=>p.selected&&p.decision!=='removed')
 
+  // Dynamic city cover binding
+  const cityCover =
+    destination === 'Hong Kong'
+      ? imageAssets.hongkong.cover
+      : imageAssets.tokyo.cover
+
+
   function move(dayId:number,index:number,dir:-1|1){
     setItinerary(all=>all.map(d=>{
       if(d.id!==dayId)return d
@@ -43,11 +50,13 @@ export function PlanScreen({destination,view,setView,places,itinerary,setItinera
   return <div className="screen-scroll">
     <PageHeader title="Plan" subtitle={`${destination} · ${selected.length} selected places · built from your sources`}/>
     <main className="screen-content plan-content">
+
       <TripCover
-        image={imageAssets.tokyo.cover}
+        image={cityCover}
         title={`${destination} Escape`}
         subtitle={`${selected.length} places · freshness checked`}
       />
+
       <div className="segmented">
         {(['map','places','itinerary'] as PlanView[]).map(v=>
           <button key={v} className={view===v?'active':''} onClick={()=>setView(v)}>
