@@ -1,0 +1,32 @@
+// FreshnessFlow integration patch
+
+import { DecisionBar } from '../components/DecisionBar'
+import { ConfidenceMeter } from '../components/ConfidenceMeter'
+import { InformationDiff } from '../components/InformationDiff'
+
+
+// Replace Saved vs Recent text blocks:
+
+<InformationDiff
+  previous={place.previousInfo}
+  latest={place.latestInfo}
+  source={place.source}
+  checked={place.lastChecked}
+/>
+
+
+// Add AI confidence visualization:
+
+<ConfidenceMeter
+  confidence={place.confidence}
+/>
+
+
+// Replace decision buttons:
+
+<DecisionBar
+  decision={place.decision}
+  onChange={(decision)=>{
+    onDecision?.(place, decision)
+  }}
+/>

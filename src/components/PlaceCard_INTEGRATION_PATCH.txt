@@ -1,0 +1,15 @@
+// PlaceCard integration patch
+// Replace duplicated Keep / Review / Remove buttons with:
+
+import { DecisionBar } from './DecisionBar'
+
+// Inside PlaceCard JSX:
+
+<DecisionBar
+  decision={place.decision}
+  onChange={(decision)=>{
+    onDecision?.(place, decision)
+  }}
+/>
+
+// Keep existing card layout, title, metadata and evidence sections unchanged.
