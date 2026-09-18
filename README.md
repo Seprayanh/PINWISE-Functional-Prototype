@@ -1,30 +1,16 @@
-# PINWISE Design System v1.0 + Typography Upgrade
+# PINWISE Image Enhancement v1
 
-Changes:
+Added:
 
-## Typography
-- Added Fraunces for product headings
-- Added Inter for UI and body text
-- Removed unstable font weights
+- Trip cover image system
+- Place thumbnails
+- AI evidence preview image
+- Image fallback component
 
-## Design Tokens
-- Color variables
-- Spacing scale
-- Radius system
-- Typography tokens
+Suggested integration:
 
-## Components
-Updated:
-- DecisionBar
-- ConfidenceMeter
-- InformationDiff
+1. Import imageAssets into CITY_PLACE_DATA
+2. Add thumbnail field to Place type
+3. Add TripCover to Plan/Home header
+4. Add EvidencePreview inside FreshnessFlow
 
-Goal:
-Create a consistent PINWISE visual language:
-warm, trustworthy, human-centered AI travel planning.
-
-After integration:
-
-git add .
-git commit -m "Add PINWISE design system and typography upgrade"
-git push origin main
