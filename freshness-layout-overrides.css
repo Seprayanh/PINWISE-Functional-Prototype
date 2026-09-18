@@ -1,0 +1,77 @@
+
+
+/* PINWISE FreshnessFlow v2 layout polish */
+
+.flow-screen{
+  display:flex;
+  flex-direction:column;
+}
+
+.flow-content{
+  padding:0 24px 36px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.flow-title{
+  padding:12px 0 8px;
+}
+
+.flow-title h1{
+  font-size:30px;
+  line-height:1.15;
+  margin:0 0 8px;
+}
+
+.flow-title p{
+  font-size:15px;
+  line-height:1.45;
+}
+
+.info-card,
+.evidence-card,
+.decision-card{
+  padding:18px;
+}
+
+.primary-button,
+.secondary-button{
+  min-height:54px;
+}
+
+.flow-screen .confidence-card{
+  margin:4px 0 8px;
+}
+
+.flow-screen .confidence-title strong{
+  font-size:28px;
+}
+
+.leaflet-popup-pane{
+  z-index:900!important;
+}
+
+.leaflet-marker-pane{
+  z-index:700!important;
+}
+
+.pinwise-popup-inner{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.pinwise-popup-inner strong{
+  font-size:14px;
+}
+
+.pinwise-popup-inner span{
+  font-size:12px;
+  color:#1F5F49;
+}
+
+.pinwise-popup-inner em{
+  font-size:11px;
+  color:#716C59;
+}

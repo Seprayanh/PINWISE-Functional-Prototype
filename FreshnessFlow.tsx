@@ -118,16 +118,16 @@ export function FreshnessFlow({
    <h1>{resultStatus==='outdated'?'Outdated':resultStatus==='review'?'Needs review':'Looks current'}</h1>
   </div>
 
-  <div className="result-diff-section result-spacing">
-    <InformationDiff   
-         previous={place.savedInfo}
+  <div className="result-diff-section">
+  <InformationDiff
+   previous={place.savedInfo}
    latest={place.recentInfo}
    source={place.evidence?.[0]?.source || 'Recent source'}
-   checked={place.lastChecked}  
-   />  
-   </div>  
-   
-   <ConfidenceMeter confidence={place.confidence}/>
+   checked={place.lastChecked}
+  />
+  </div>
+
+  <ConfidenceMeter confidence={place.confidence}/>
 
   <section className="info-card soft">
    <strong>Why AI reached this result</strong>
@@ -153,8 +153,6 @@ export function FreshnessFlow({
   </div>
 
   <div className="evidence-stack">
-
-  <div className="evidence-list">
 
   {(place.evidence?.length
    ? place.evidence
@@ -183,21 +181,16 @@ export function FreshnessFlow({
    </details>
   )}
 
-  </div>
-
-  <div className="evidence-preview-block">
   <EvidencePreview
    image={place.evidenceImage}
    source="Recent evidence"
    title={place.recentInfo}
   />
-  </div>
 
-  <div className="evidence-action-block">
+
   <button className="primary-button" onClick={()=>setStage('decision')}>
    Decide what to do
   </button>
-  </div>
 
   </div>
  </div>}
@@ -210,7 +203,7 @@ export function FreshnessFlow({
    <p>AI informs the decision but you stay in control.</p>
   </div>
 
-  <div className="decision-panel decision-options">
+  <div className="decision-panel">
   <DecisionBar
    decision={place.decision}
    onChange={(decision)=>

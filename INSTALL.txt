@@ -1,0 +1,10 @@
+PINWISE FreshnessFlow v2 polish
+
+Replace:
+src/screens/FreshnessFlow.tsx
+src/components/RealMap.tsx
+
+Append freshness-layout-overrides.css content to the END of:
+src/index.css or src/v3_1-overrides.css
+
+No data, AI confidence logic, stage logic, or decision logic changed.

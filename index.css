@@ -193,25 +193,88 @@ input,
 }
 
 
-/* PINWISE Plan hero spacing polish */
-.plan-content .trip-cover{
-  margin-bottom:28px;
+/* PINWISE current Freshness polish - matches existing DOM */
+
+.decision-bar{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin:18px 0;
 }
 
-.plan-content .trip-cover-overlay{
-  padding-top:16px;
+.decision-bar button{
+ min-height:46px;
+ border-radius:14px;
+ border:1px solid #e7ddc8;
+ background:#fff;
+ font-weight:700;
+ font-size:15px;
 }
 
-.plan-content .trip-cover-overlay h1{
-  margin:0;
-  line-height:1.2;
+.decision-bar button.active.keep{
+ background:#DDEDE5;
+ border-color:#2C5745;
+ color:#2C5745;
 }
 
-.plan-content .trip-cover-overlay p:empty{
-  display:none;
+.decision-bar button.active.review{
+ background:#F5EAC8;
+ border-color:#C8A94E;
+ color:#7A5A00;
 }
 
-.plan-content .segmented{
-  margin-top:0;
-  margin-bottom:28px;
+.decision-bar button.active.remove{
+ background:#F1ECE6;
+ border-color:#B9AE9A;
+ color:#5B5142;
+}
+
+.evidence-card .eyebrow{
+ display:block;
+ margin-bottom:8px;
+}
+
+.evidence-card h2{
+ margin-top:0;
+ line-height:1.35;
+}
+
+.diff-card{
+ display:flex;
+ flex-direction:column;
+ gap:18px;
+}
+
+.diff-section{
+ padding:16px;
+ border-radius:16px;
+ background:#fff;
+ border:1px solid #E7DDC8;
+}
+
+.diff-section label{
+ display:block;
+ margin-bottom:8px;
+ font-size:13px;
+ font-weight:700;
+ color:#6E695D;
+}
+
+.diff-section p{
+ margin:0;
+ font-size:17px;
+ line-height:1.55;
+ color:#24231F;
+}
+
+.map-layer{
+ position:relative;
+ z-index:1;
+}
+
+.freshness-actions,
+.primary-button,
+.secondary-button{
+ position:relative;
+ z-index:20;
 }

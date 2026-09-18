@@ -48,13 +48,13 @@ export function PlanScreen({destination,view,setView,places,itinerary,setItinera
   }
 
   return <div className="screen-scroll">
-    <PageHeader title="Plan" subtitle={`${destination} · ${selected.length} selected places · built from your sources`}/>
+    <PageHeader title="Plan" />
     <main className="screen-content plan-content">
 
       <TripCover
         image={cityCover}
         title={`${destination} Escape`}
-        subtitle={`${selected.length} places · freshness checked`}
+        subtitle=""
       />
 
       <div className="segmented">
