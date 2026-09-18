@@ -10,3 +10,19 @@ export const CITY_PLACE_DATA = {
   HongKong: HONGKONG_PLACES,
   hongkong: HONGKONG_PLACES,
 }
+
+
+// Image bindings for visual enhancement
+export const CITY_IMAGE_BINDINGS = {
+  Tokyo: {
+    cover: '/images/tokyo-cover.jpg',
+    places: {
+      'Koffee Mameya': '/images/koffee-mameya.jpg',
+      'Senso-ji': '/images/sensoji.jpg',
+    }
+  },
+  'Hong Kong': {
+    cover: '/images/hongkong-cover.jpg',
+    places: {}
+  }
+}

@@ -4,6 +4,8 @@ import { IconAlert, IconGrip, IconPlus, IconRefresh, IconTrash } from '../compon
 import { PlaceCard } from '../components/PlaceCard'
 import { RealMap } from '../components/RealMap'
 import { Badge, PageHeader } from '../components/UI'
+import { TripCover } from '../components/TripCover'
+import { imageAssets } from '../data/imageAssets'
 
 export function PlanScreen({destination,view,setView,places,itinerary,setItinerary,onPlace,onDecision,onReoptimize,onConflict,finalized,onFinalize}:{
   destination:string;view:PlanView;setView:(v:PlanView)=>void;places:Place[];itinerary:ItineraryDay[];
@@ -41,6 +43,11 @@ export function PlanScreen({destination,view,setView,places,itinerary,setItinera
   return <div className="screen-scroll">
     <PageHeader title="Plan" subtitle={`${destination} · ${selected.length} selected places · built from your sources`}/>
     <main className="screen-content plan-content">
+      <TripCover
+        image={imageAssets.tokyo.cover}
+        title={`${destination} Escape`}
+        subtitle={`${selected.length} places · freshness checked`}
+      />
       <div className="segmented">
         {(['map','places','itinerary'] as PlanView[]).map(v=>
           <button key={v} className={view===v?'active':''} onClick={()=>setView(v)}>

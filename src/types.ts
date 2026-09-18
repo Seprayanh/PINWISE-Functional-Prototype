@@ -52,6 +52,9 @@ export type Place = {
   lastChecked?: string
   evidence?: EvidenceItem[]
   alternativeId?: string
+  image?: string
+  thumbnail?: string
+  evidenceImage?: string
 }
 
 export type ItineraryItem = {

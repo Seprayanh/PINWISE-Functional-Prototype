@@ -5,6 +5,7 @@ import { Badge, ProgressPanel } from '../components/UI'
 import { DecisionBar } from '../components/DecisionBar'
 import { ConfidenceMeter } from '../components/ConfidenceMeter'
 import { InformationDiff } from '../components/InformationDiff'
+import { EvidencePreview } from '../components/EvidencePreview'
 
 export function FreshnessFlow({
  place,
@@ -177,6 +178,13 @@ export function FreshnessFlow({
     <p>{e.text}</p>
    </details>
   )}
+
+  <EvidencePreview
+   image={place.evidenceImage}
+   source="Recent evidence"
+   title={place.recentInfo}
+   confidence={place.confidence === 'High' ? 90 : place.confidence === 'Medium' ? 70 : 50}
+  />
 
   <ConfidenceMeter confidence={place.confidence}/>
 
