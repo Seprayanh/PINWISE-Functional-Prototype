@@ -27,7 +27,18 @@
 .real-map-wrap{border:1px solid #ddd4b8;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 8px 24px rgba(46,41,16,.07)}
 .map-legend{font-weight:700}
 
-/* retain stronger v3 typography */
-.page-header h1,.flow-title h1,.trip-card h2,.hero-card h2{font-weight:900}
-.page-header p,.trip-card p,.hero-card p{font-weight:560}
-.quick-card strong,.day-heading strong,.it-place strong,.source-row strong,.place-copy strong{font-weight:850}
+/* refined typography: lighter hierarchy for a calmer AI travel assistant style */
+.page-header h1,.flow-title h1{
+  font-weight:700;
+  letter-spacing:-.02em;
+}
+.trip-card h2,.hero-card h2{
+  font-weight:650;
+  letter-spacing:-.01em;
+}
+.page-header p,.trip-card p,.hero-card p{
+  font-weight:400;
+}
+.quick-card strong,.day-heading strong,.it-place strong,.source-row strong,.place-copy strong{
+  font-weight:600;
+}

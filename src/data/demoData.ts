@@ -102,3 +102,75 @@ export const INITIAL_ITINERARY: ItineraryDay[] = [
     {id:'d2-2', time:'13:00', placeId:'ueno'},
   ]},
 ]
+
+
+export const HONGKONG_TRIP: TripMeta = {
+  id:'hongkong-trip',
+  destination:'Hong Kong',
+  startDate:'2027-05-10',
+  endDate:'2027-05-14',
+  saved:false,
+}
+
+export const HONGKONG_PLACES: Place[] = [
+  {
+    id:'victoria-peak',
+    name:'Victoria Peak',
+    area:'Central',
+    kind:'Attraction',
+    mentions:4,
+    selected:true,
+    decision:'kept',
+    status:'current',
+    postAge:'3 weeks',
+    confidence:'High',
+    savedInfo:'Peak Tram access available · best sunset view',
+    recentInfo:'Current transport information confirms operation hours',
+    note:'Popular viewpoint with changing crowd conditions.',
+    marker:{x:55,y:25},
+    lat:22.2759,
+    lng:114.1455,
+    lastChecked:'today',
+    evidence:[ev('vp1','Official Peak Tram','2 days ago','Service hours remain updated.','current')],
+  },
+  {
+    id:'mplus',
+    name:'M+ Museum',
+    area:'West Kowloon',
+    kind:'Museum',
+    mentions:3,
+    selected:true,
+    decision:'review',
+    status:'review',
+    postAge:'8 months',
+    confidence:'High',
+    savedInfo:'Open until 22:00 on weekends',
+    recentInfo:'Current schedule shows different closing hours',
+    note:'Museum exhibitions and opening hours frequently change.',
+    marker:{x:42,y:48},
+    lat:22.3018,
+    lng:114.0365,
+    evidence:[
+      ev('mplus1','Official museum site','1 day ago','Opening hours changed after exhibition update.','conflict'),
+      ev('mplus2','Saved Xiaohongshu post','8 months ago','Weekend opening until 22:00.','old')
+    ],
+  },
+  {
+    id:'tai-kwun',
+    name:'Tai Kwun',
+    area:'Central',
+    kind:'Culture',
+    mentions:2,
+    selected:false,
+    decision:'candidate',
+    status:'unverified',
+    postAge:'just added',
+    confidence:'Medium',
+    savedInfo:'Historic compound with exhibitions',
+    recentInfo:'Not checked yet.',
+    note:'New candidate extracted from travel sources.',
+    marker:{x:62,y:40},
+    lat:22.2819,
+    lng:114.1542,
+  }
+]

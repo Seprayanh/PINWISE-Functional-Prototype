@@ -4,7 +4,7 @@
 :root{
   --olive:#2E2910; --forest:#2C5745; --sand:#EBE3A7; --orange:#EB7D00; --app:#FCFAF3; --surface:#FFFFFF;
   --border:#E9E3CF; --border-strong:#CFC7AE; --muted:#716C59; --soft-green:#EAF2ED; --soft-orange:#FFF1DC; --soft-sand:#FAF7E8;
-  --danger:#8E3B2F; --shadow:0 20px 60px rgba(46,41,16,.18); --radius:18px;
+  --danger:#8E3B2F; --ai:#7567D8; --ai-soft:#F0EEFF; --shadow:0 20px 60px rgba(46,41,16,.18); --radius:18px;
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif; color:var(--olive); background:#EDE8D8;
   font-synthesis:none; text-rendering:optimizeLegibility;
 }
