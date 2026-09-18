@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type SetStateAction } from 'react'
 import { BottomNav, HomeIndicator, StatusBar } from './components/Chrome'
 import { ProgressPanel } from './components/UI'
 import { EXTRACTED_BATCH, INITIAL_ITINERARY, INITIAL_PLACES, INITIAL_SOURCES, INITIAL_TRIP } from './data/demoData'
+import { CITY_PLACE_DATA } from './data/CITY_PLACE_DATA'
 import { FreshnessFlow } from './screens/FreshnessFlow'
 import { HomeScreen } from './screens/Home'
 import { NewTrip } from './screens/NewTrip'
@@ -126,7 +127,25 @@ export default function App(){
   }
   function confirmAlternative(){const old=places.find(p=>p.alternativeId&&p.selected&&['review','outdated'].includes(p.status));if(old)replacePlace(old);setAlternativeSuggestion(false)}
   function finalize(){updateActive(p=>({...p,finalized:true,meta:{...p.meta,saved:true}}));showToast('Final trip saved');setTimeout(()=>setTab('home'),650)}
-  function createTrip(meta:TripMeta){const newPlan:TripPlan={id:meta.id,meta,sources:[],places:[],itinerary:[{id:1,title:'Day 1',area:meta.destination,items:[]}],finalized:false,updatedAt:now()};setPlans(all=>[...all,newPlan]);setActivePlanId(meta.id);setNewTripOpen(false);setWorkspaceOpen(true);setTab('sources');setPlanView('map');showToast('Trip created · add your first source')}
+  function createTrip(meta:TripMeta){
+    const cityPlaces=CITY_PLACE_DATA[meta.destination]||CITY_PLACE_DATA[meta.destination?.trim()]||[]
+    const newPlan:TripPlan={
+      id:meta.id,
+      meta,
+      sources:[],
+      places:cityPlaces.map(p=>({...p,evidence:p.evidence?.map(e=>({...e}))})),
+      itinerary:[{id:1,title:'Day 1',area:meta.destination,items:[]}],
+      finalized:false,
+      updatedAt:now()
+    }
+    setPlans(all=>[...all,newPlan])
+    setActivePlanId(meta.id)
+    setNewTripOpen(false)
+    setWorkspaceOpen(true)
+    setTab('sources')
+    setPlanView('map')
+    showToast('Trip created · add your first source')
+  }
   function confirmDelete(){if(!pendingDeleteId)return;const remaining=plans.filter(p=>p.id!==pendingDeleteId);setPlans(remaining);if(activePlanId===pendingDeleteId&&remaining[0])setActivePlanId(remaining[0].id);setPendingDeleteId(null)}
 
   const content=useMemo(()=>{
