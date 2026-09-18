@@ -1,0 +1,42 @@
+:root {
+  /* Color */
+  --pinwise-bg: #F9F7F0;
+  --pinwise-surface: #FFFFFF;
+  --pinwise-primary: #1F6B55;
+  --pinwise-primary-soft: #DDEDE5;
+  --pinwise-accent-soft: #F5EAC8;
+  --pinwise-text: #24231F;
+  --pinwise-text-secondary: #6E695D;
+  --pinwise-border: #E7DDC8;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+
+  /* Typography */
+  --font-display: "Fraunces", serif;
+  --font-ui: "Inter", sans-serif;
+}
+
+body {
+  background: var(--pinwise-bg);
+  color: var(--pinwise-text);
+  font-family: var(--font-ui);
+  font-synthesis: none;
+}
+
+h1,h2,h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: normal;
+}
+

@@ -1,28 +1,35 @@
-import React from 'react'
+import type { PlaceDecision } from '../types'
 
-type Decision = 'kept' | 'review' | 'removed' | 'candidate'
+export function DecisionBar({
+ decision,
+ onChange
+}:{
+ decision:PlaceDecision;
+ onChange:(decision:PlaceDecision)=>void
+}) {
 
-interface Props {
-  decision?: Decision
-  onChange: (decision: Decision) => void
-}
+ return (
+  <div className="decision-bar">
+   <button
+    className={decision==='kept'?'active keep':''}
+    onClick={()=>onChange('kept')}
+   >
+    ✓ Keep
+   </button>
 
-const OPTIONS = [
-  {key:'kept', label:'Keep', icon:'✓'},
-  {key:'review', label:'Review', icon:'◌'},
-  {key:'removed', label:'Remove', icon:'×'},
-] as const
+   <button
+    className={decision==='review'?'active review':''}
+    onClick={()=>onChange('review')}
+   >
+    Review
+   </button>
 
-export function DecisionBar({decision,onChange}:Props){
-  return <div className="decision-bar">
-    {OPTIONS.map(option=>
-      <button
-        key={option.key}
-        className={`decision-item ${decision===option.key?'active':''}`}
-        onClick={()=>onChange(option.key)}
-      >
-        {option.icon} {option.label}
-      </button>
-    )}
+   <button
+    className={decision==='removed'?'active remove':''}
+    onClick={()=>onChange('removed')}
+   >
+    Remove
+   </button>
   </div>
+ )
 }
