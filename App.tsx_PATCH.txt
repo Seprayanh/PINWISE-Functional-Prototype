@@ -1,0 +1,76 @@
+PINWISE App.tsx city dataset binding patch
+
+Because App.tsx is a large application entry file, do not replace the whole file blindly.
+Apply these two changes.
+
+1. Add import near other data imports:
+
+import { CITY_PLACE_DATA } from './data/CITY_PLACE_DATA'
+
+
+2. Replace createTrip():
+
+BEFORE:
+
+function createTrip(meta:TripMeta){
+  const newPlan:TripPlan={
+    id:meta.id,
+    meta,
+    sources:[],
+    places:[],
+    itinerary:[
+      {
+        id:1,
+        title:'Day 1',
+        area:meta.destination,
+        items:[]
+      }
+    ],
+    finalized:false,
+    updatedAt:now()
+  }
+  ...
+}
+
+
+AFTER:
+
+function createTrip(meta:TripMeta){
+  const cityPlaces =
+    CITY_PLACE_DATA[meta.destination]
+    || CITY_PLACE_DATA[meta.destination?.trim()]
+    || []
+
+  const newPlan:TripPlan={
+    id:meta.id,
+    meta,
+    sources:[],
+    places:cityPlaces.map(p=>({
+      ...p,
+      evidence:p.evidence?.map(e=>({...e}))
+    })),
+    itinerary:[
+      {
+        id:1,
+        title:'Day 1',
+        area:meta.destination,
+        items:[]
+      }
+    ],
+    finalized:false,
+    updatedAt:now()
+  }
+
+  ...
+}
+
+
+Expected result:
+
+Hong Kong
+ -> CITY_PLACE_DATA
+ -> HONGKONG_PLACES
+ -> Victoria Peak / M+ / Tai Kwun
+
+Tokyo
+ -> INITIAL_PLACES
