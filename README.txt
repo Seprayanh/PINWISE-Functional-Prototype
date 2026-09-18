@@ -1,10 +1,23 @@
-Direct replacement version.
+PINWISE HiFi v2 Full Freshness Merge
+
+This version restores original FreshnessFlow stages:
+
+detail
+checking
+result
+evidence
+decision
+
+while integrating:
+
+- DecisionBar
+- ConfidenceMeter
+- InformationDiff
 
 Replace:
-src/components/PlaceCard.tsx
 src/screens/FreshnessFlow.tsx
 
 Then:
 git add .
-git commit -m "Integrate AI transparency UI into actual components"
+git commit -m "Restore full freshness flow with AI transparency UI"
 git push origin main
